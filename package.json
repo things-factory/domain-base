@@ -37,7 +37,10 @@
     "graphql": "^15.3.0"
   },
   "devDependencies": {
+    "@things-factory/graphql-utils": "^0.0.1-alpha.1",
     "@things-factory/utils": "^2.0.3",
+    "class-validator": "^0.12.2",
+    "graphql": "^15.3.0",
     "koa": "^2.13.0",
     "type-graphql": "^1.0.0-rc.3",
     "typedi": "^0.8.0",

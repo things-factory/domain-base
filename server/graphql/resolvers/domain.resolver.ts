@@ -34,9 +34,11 @@ export class DomainResolver {
     return this.domainRepository.save(domain)
   }
 
-  @Mutation(returns => Boolean)
+  @Mutation(returns => [Domain])
   async deleteDomain(@Arg('name') name: string) {
-    return this.domainRepository.delete({ name })
+    const willDelete = this.domainRepository.find({ name })
+    await this.domainRepository.delete({ name })
+    return willDelete
   }
 
   @Mutation(returns => Domain)
