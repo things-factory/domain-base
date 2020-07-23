@@ -37,7 +37,7 @@
     "graphql": "^15.3.0"
   },
   "devDependencies": {
-    "@things-factory/graphql-utils": "^0.0.1-alpha.1",
+    "@things-factory/graphql-utils": "^0.0.1-alpha.2",
     "@things-factory/utils": "^2.0.3",
     "class-validator": "^0.12.2",
     "graphql": "^15.3.0",
@@ -46,6 +46,6 @@
     "typedi": "^0.8.0",
     "typeorm": "^0.2.25",
     "typeorm-typedi-extensions": "^0.2.3",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.7"
   }
 }
