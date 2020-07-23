@@ -1,14 +1,15 @@
+import { buildQuery, ListParam, PaginatedResponse } from '@things-factory/graphql-utils'
 import { Context } from 'koa'
 import { Arg, Args, Ctx, Mutation, Query, Resolver } from 'type-graphql'
 import { Service } from 'typedi'
 import { Repository } from 'typeorm'
 import { InjectRepository } from 'typeorm-typedi-extensions'
 import { Domain } from '../../entities'
-import { buildQuery } from '@things-factory/graphql-utils'
 import { CreateDomainInput } from '../types/domain/create-domain-input'
-import { DomainList } from '../types/domain/domain-list'
 import { UpdateDomainInput } from '../types/domain/domain-patch'
-import { ListParam } from '@things-factory/graphql-utils'
+
+const PaginatedDomainResponse = PaginatedResponse(Domain)
+type PaginatedDomainResponse = InstanceType<typeof PaginatedDomainResponse>
 
 @Service()
 @Resolver(of => Domain)
@@ -20,7 +21,7 @@ export class DomainResolver {
     return this.domainRepository.findOne({ name })
   }
 
-  @Query(returns => DomainList)
+  @Query(returns => PaginatedDomainResponse)
   async domains(@Args() params: ListParam, @Ctx() context: Context & Record<string, any>) {
     const queryBuilder = this.domainRepository.createQueryBuilder()
     buildQuery(queryBuilder, params, context, false)
