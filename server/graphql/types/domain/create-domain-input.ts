@@ -1,5 +1,5 @@
+import { Field, InputType } from 'type-graphql'
 import { Domain } from '../../../entities'
-import { InputType, Field } from 'type-graphql'
 
 @InputType()
 export class CreateDomainInput implements Partial<Domain> {

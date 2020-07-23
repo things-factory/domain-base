@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, getRepository } from 'typeorm'
+import { getRepository, MigrationInterface, QueryRunner } from 'typeorm'
 import { Domain } from '../entities'
 
 const SEED_DOMAINS = [

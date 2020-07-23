@@ -1,6 +1,6 @@
+import { Partial } from '@things-factory/graphql-utils'
 import { ArgsType, Field, InputType } from 'type-graphql'
 import { Domain } from '../../../entities'
-import { Partial } from '@things-factory/graphql-utils'
 
 @InputType()
 export class DomainPatch extends Partial(Domain) {}
