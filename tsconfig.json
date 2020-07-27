@@ -16,5 +16,5 @@
     "lib": ["es2018", "esnext.asynciterable"]
   },
   "include": ["./server/**/*"],
-  "exclude": ["**/*.spec.ts"]
+  "exclude": ["**/*.spec.ts", "node_modules"]
 }

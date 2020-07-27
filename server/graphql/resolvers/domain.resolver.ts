@@ -6,7 +6,7 @@ import { Repository } from 'typeorm'
 import { InjectRepository } from 'typeorm-typedi-extensions'
 import { Domain } from '../../entities'
 import { CreateDomainInput } from '../types/domain/create-domain-input'
-import { UpdateDomainInput } from '../types/domain/domain-patch'
+import { DomainPatch } from '../types/domain/domain-patch'
 
 const PaginatedDomainResponse = PaginatedResponse(Domain)
 type PaginatedDomainResponse = InstanceType<typeof PaginatedDomainResponse>
@@ -43,7 +43,7 @@ export class DomainResolver {
   }
 
   @Mutation(returns => Domain)
-  async updateDomain(@Args() { name, patch }: UpdateDomainInput) {
+  async updateDomain(@Arg('name') name: string, @Arg('patch') patch: DomainPatch) {
     const repository = this.domainRepository
     const domain = await repository.findOne({ name })
 
