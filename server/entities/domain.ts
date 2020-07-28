@@ -1,16 +1,13 @@
-import { Field, ID, ObjectType } from 'type-graphql'
-import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { BaseEntity, TimeStamp } from '@things-factory/graphql-utils'
+import { Field, ObjectType } from 'type-graphql'
+import { Column, Entity, Index } from 'typeorm'
 
-@ObjectType('Domain')
-@Entity('domains')
+@ObjectType()
+@Entity()
 @Index('ix_domain_0', (domain: Domain) => [domain.name], { unique: true })
 @Index('ix_domain_1', (domain: Domain) => [domain.subdomain])
 @Index('ix_domain_2', (domain: Domain) => [domain.systemFlag])
-export class Domain {
-  @Field(type => ID)
-  @PrimaryGeneratedColumn('uuid')
-  id: string
-
+export class Domain extends TimeStamp(BaseEntity) {
   @Field()
   @Column({ unique: true })
   name: string
@@ -45,12 +42,4 @@ export class Domain {
   @Field({ nullable: true })
   @Column({ nullable: true })
   theme?: string
-
-  @Field()
-  @CreateDateColumn()
-  createdAt: Date
-
-  @Field()
-  @UpdateDateColumn()
-  updatedAt: Date
 }
